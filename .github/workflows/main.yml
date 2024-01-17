@@ -23,6 +23,18 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt  # change this if you have dependencies
 
+    - name: Install jitterbit
+      uses: jitterbit/get-changed-files@v1
+      with:
+        format: ''
+
+    - id: files
+      uses: jitterbit/get-changed-files@v1
+    - run: |
+        for changed_file in ${{ steps.files.outputs.all }}; do
+          echo "Do something with this ${changed_file}."
+        done
+
     - name: List changed files
       id: list_changes
       run: echo "::set-output name=changes::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})"
