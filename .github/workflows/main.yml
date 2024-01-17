@@ -29,4 +29,4 @@ jobs:
 
     - name: Run Python script on modified files
       run: |
-        python your_script.py ${{ steps.list_changes.outputs.changes }}
+        python validate_schema_json.py ${{ steps.list_changes.outputs.changes }}
