@@ -1,0 +1,87 @@
+{
+  "MineralSite": [
+    {
+      "source_id": "https://w3id.org/usgs/z/4530692/R49Z8F3P",
+      "record_id": 1,
+      "name": "Competent person’s report for the Reocín Mine and San Juan de Nieva zinc assets held by Asturiana de Zinc S.L.",
+      "location_info": {
+        "country": "Spain",
+        "state_or_province": "Cantabria"
+      },
+      "MineralInventory": [
+        {
+          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p1---competentpersonsreportforthereocínmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3--httpsminmodisieduresourceq589-httpsminmodisieduresourcemeasured",
+          "commodity": "https://minmod.isi.edu/resource/Q589",
+          "category": "https://minmod.isi.edu/resource/Measured",
+          "ore": {
+            "ore_unit": "https://minmod.isi.edu/resource/Q200",
+            "ore_value": 1162
+          },
+          "grade": {
+            "grade_unit": "https://minmod.isi.edu/resource/Q201",
+            "grade_value": 9.2
+          },
+          "contained_metal": 106904,
+          "reference": {
+            "id": 0,
+            "document": {
+              "id": "https://minmod.isi.edu/resource/--competentpersonsreportforthereocínmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3-",
+              "title": "competent person’s report for the reocín mine and san juan de nieva zinc assets held by asturiana de zinc s.l.",
+              "month": 3,
+              "year": 2002
+            },
+            "page_info": [
+              {
+                "page": 12
+              }
+            ]
+          },
+          "date": "2002-03-03"
+        },
+        {
+          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p1-httpsw3idorgusgsz4530692r49z8f3p--competentpersonsreportforthereocínmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3--httpsminmodisieduresourceq589-httpsminmodisieduresourceclassification",
+          "commodity": "https://minmod.isi.edu/resource/Q589",
+          "category": "https://minmod.isi.edu/resource/classification",
+          "ore": {
+            "ore_unit": "https://minmod.isi.edu/resource/q200",
+            "ore_value": 1441
+          },
+          "grade": {
+            "grade_unit": "https://minmod.isi.edu/resource/q201",
+            "grade_value": 7.42
+          },
+          "contained_metal": 106862.2,
+          "reference": {
+            "id": 1,
+            "document": {
+              "doi": "https://w3id.org/usgs/z/4530692/R49Z8F3P",
+              "title": "competent person’s report for the reocín mine and san juan de nieva zinc assets held by asturiana de zinc s.l.",
+              "uri": "",
+              "month": 3,
+              "year": 2002,
+              "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p--competentpersonsreportforthereocínmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3-"
+            },
+            "page_info": [
+              {
+                "page": 12,
+                "bounding_box": {
+                  "x_min": "",
+                  "x_max": "",
+                  "y_min": "",
+                  "y_max": ""
+                }
+              }
+            ]
+          },
+          "date": "2002-03-03"
+        }
+      ],
+      "deposit_type": [
+        {
+          "id": "https://minmod.isi.edu/resource/Q375"
+        }
+      ],
+      "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p1"
+    }
+  ]
+}
