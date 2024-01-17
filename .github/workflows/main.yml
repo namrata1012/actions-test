@@ -33,6 +33,7 @@ jobs:
     - run: |
         for changed_file in ${{ steps.files.outputs.all }}; do
           echo "Do something with this ${changed_file}."
+          python validate_schema_json.py ${changed_file}
         done
 
     - name: List changed files
