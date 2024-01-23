@@ -42,7 +42,7 @@ def process_files(filename):
                 "items": {
                     "type": "object",
                     "properties" : {
-                        "id" : {"type" : "number"},
+                        "id" : {"type" : "string"},
                         "name" : {"type" : "string"},
                         "source_id" : {"type" : "string"},
                         "record_id" : {"type" : "number"},
@@ -83,7 +83,7 @@ def process_files(filename):
                             "items": {
                                 "type": "object",
                                 "properties": {
-                                    "id": {"type": "number"},
+                                    "id": {"type": "string"},
                                     "category": {"type": "string"},
                                     "contained_metal": {"type": "number"},
                                     "reference": {

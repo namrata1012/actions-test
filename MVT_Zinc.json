@@ -10,7 +10,6 @@
       },
       "MineralInventory": [
         {
-          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p1---competentpersonsreportforthereocínmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3--httpsminmodisieduresourceq589-httpsminmodisieduresourcemeasured",
           "commodity": "https://minmod.isi.edu/resource/Q589",
           "category": "https://minmod.isi.edu/resource/Measured",
           "ore": {
@@ -25,7 +24,6 @@
           "reference": {
             "id": 0,
             "document": {
-              "id": "https://minmod.isi.edu/resource/--competentpersonsreportforthereocínmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3-",
               "title": "competent person’s report for the reocín mine and san juan de nieva zinc assets held by asturiana de zinc s.l.",
               "month": 3,
               "year": 2002
@@ -39,7 +37,6 @@
           "date": "2002-03-03"
         },
         {
-          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p1-httpsw3idorgusgsz4530692r49z8f3p--competentpersonsreportforthereocínmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3--httpsminmodisieduresourceq589-httpsminmodisieduresourceclassification",
           "commodity": "https://minmod.isi.edu/resource/Q589",
           "category": "https://minmod.isi.edu/resource/classification",
           "ore": {
@@ -81,7 +78,6 @@
           "id": "https://minmod.isi.edu/resource/Q375"
         }
       ],
-      "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p1"
     }
   ]
 }
