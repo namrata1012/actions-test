@@ -10,6 +10,21 @@ def is_json_file(file_path):
     _, file_extension = os.path.splitext(file_path)
     return file_extension.lower() == '.json'
 
+
+def update_pull_request(file_content, file_path):
+    pull_request_number = os.environ.get('GITHUB_REF').split('/')[-1]
+    github_token = os.environ.get('GITHUB_TOKEN')
+
+    url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/pulls/{pull_request_number}/files/{file_path}'
+    headers = {'Authorization': f'token {github_token}'}
+
+    response = requests.put(url, headers=headers, json={'content': file_content})
+
+    if response.status_code == 200:
+        print(f'Successfully updated file in pull request #{pull_request_number}')
+    else:
+        print(f'Failed to update file. Status code: {response.status_code}, Response: {response.text}')
+
 def process_files(filename):
     try:
         with open(filename, 'r') as file:
@@ -176,6 +191,54 @@ for file_path in changed_files:
     if is_json_file(file_path):
         print(f'{file_path} is a JSON file')
         process_files(file_path)
+        json_data=''
+        with open(file_path) as file:
+            json_data = json.load(file)
+
+        json_string = json.dumps(json_data)
+        mineral_site_json = json.loads(json_string)
+
+        ms_list = json_data['MineralSite']
+        mndr_url = 'https://minmod.isi.edu/resource/'
+
+        for ms in ms_list:
+            mi_data = {
+                "site": ms
+            }
+
+            ms['id'] = mndr_url + mineral_site_uri(mi_data)
+            if "MineralInventory" in ms:
+
+                mi_list = ms['MineralInventory']
+
+                counter = 0
+
+                for mi in mi_list:
+                    mi_data = {
+                        "site": ms,
+                        "id": counter
+                    }
+                    mi['id'] = mndr_url + mineral_inventory_uri(mi_data)
+                    counter += 1
+
+                    if "reference" in mi:
+                        reference = mi['reference']
+                        if "document" in reference:
+                            document = reference['document']
+
+                            doc_data = {
+                                "document": document
+                            }
+
+                            document['id'] = mndr_url + document_uri(doc_data)
+
+
+        update_pull_request(json.dumps(json_data, indent=2), file_path)
+
+
+
+
+
     else:
         print(f'{file_path} is not a JSON file')
 

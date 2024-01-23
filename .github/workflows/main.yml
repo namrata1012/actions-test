@@ -32,27 +32,5 @@ jobs:
       uses: jitterbit/get-changed-files@v1
     - run: |
         for changed_file in ${{ steps.files.outputs.all }}; do
-          echo "Do something with this ${changed_file}."
           python validate_schema_json.py ${changed_file}
         done
-
-    - name: List changed files
-      id: list_changes
-      run: echo "::set-output name=changes::$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})"
-
-    - name: List changed files
-      run: |
-        # Get the list of changed files
-        changed_files=$(git diff --name-only)
-
-        # Display the list of changed files
-        echo "Changed Files:"
-        echo "$changed_files"
-
-    - name: Run Python script and capture output
-      run: |
-        output=$(python validate_schema_json.py ${{ steps.list_changes.outputs.changes }})
-        echo "$output" > output.txt  # Optionally, save the output to a file
-
-    - name: Display Python script output
-      run: cat output.txt
