@@ -15,11 +15,11 @@
           "category": "https://minmod.isi.edu/resource/Measured",
           "ore": {
             "ore_unit": "https://minmod.isi.edu/resource/Q200",
-            "ore_value": "1162"
+            "ore_value": 1162
           },
           "grade": {
             "grade_unit": "https://minmod.isi.edu/resource/Q201",
-            "grade_value": "9.2"
+            "grade_value": 9.2
           },
           "contained_metal": 106904,
           "reference": {
