@@ -6,6 +6,32 @@ import uuid
 import os
 import generate_uris
 
+def get_sha(file_path):
+    repository = os.environ["GITHUB_REPOSITORY"]
+
+# GitHub API endpoint URL
+    url = f'https://api.github.com/repos/{repository}/contents/{file_path}'
+
+# Prepare headers
+    headers = {
+        'Authorization': f'Bearer {os.environ["GITHUB_TOKEN"]}',
+        'Accept': 'application/vnd.github.v3+json',
+    }
+
+# Make the API request to get file information
+    response = requests.get(url, headers=headers)
+
+# Check if the request was successful
+    if response.status_code == 200:
+    # Parse the JSON response
+        file_info = response.json()
+
+    # Extract the SHA of the existing file
+        existing_sha = file_info['sha']
+
+        print(f'The existing SHA of {file_path} is: {existing_sha}')
+    else:
+        print(f'Failed to retrieve file information. Status code: {response.status_code}, Response: {response.text}')
 def mineral_site_uri(data):
     response = generate_uris.mineral_site_uri(data)
     uri = ''
@@ -42,9 +68,23 @@ def update_pull_request(file_content, file_path):
     url2 = "https://api.github.com/repos/:owner/:repo/pulls/:number"
 
     print(url)
-    headers = {'Authorization': f'token {github_token}'}
+    headers = {
+        'Authorization': f'Bearer {github_token}',
+        'Content-Type': 'application/json',
+    }
 
-    response = requests.put(url, headers=headers, json={'content': file_content})
+    existing_sha = get_sha(file_path)
+
+# Prepare payload with the new content
+    payload = {
+        'message': 'Update file via GitHub Actions',
+        'content': new_content.encode('base64').decode('utf-8'),  # Encode new content in base64
+        'branch': 'main',  # Specify the branch where the pull request is located
+        'sha': existing_sha,  # Provide the existing SHA of the file (you can fetch it using GitHub API)
+    }
+
+# Make the API request to update the file
+    response = requests.put(url, headers=headers, json=payload)
 
     if response.status_code == 200:
         print(f'Successfully updated file in pull request #{pull_request_number}')
