@@ -20,18 +20,19 @@ def get_sha(file_content, file_path):
 
 # Make the API request to get file information
     response = requests.get(url, headers=headers)
+    sha = None
 
 # Check if the request was successful
     if response.status_code == 200:
-    # Parse the JSON response
-        file_info = response.json()
-
-    # Extract the SHA of the existing file
-        existing_sha = file_info['sha']
-
-        print(f'The existing SHA of {file_path} is: {existing_sha}')
+    # File exists, update it
+        sha = response.json()['sha']
+        return sha
     else:
-        print(f'Failed to retrieve file information. Status code: {response.status_code}, Response: {response.text}')
+    # File doesn't exist, create it
+        sha = None
+    return sha
+
+
 def mineral_site_uri(data):
     response = generate_uris.mineral_site_uri(data)
     uri = ''
@@ -89,7 +90,7 @@ def update_pull_request(file_content, file_path):
 # Make the API request to update the file
     response = requests.put(url, headers=headers, json=payload)
 
-    if response.status_code == 200:
+    if response.status_code == 200 or response.status_code == 201:
         print(f'Successfully updated file in pull request #{pull_request_number}')
     else:
         print(f'Failed to update file. Status code: {response.status_code}, Response: {response.text}')
