@@ -4,6 +4,26 @@ import sys
 import requests
 import uuid
 import os
+import generate_uris
+
+def mineral_site_uri(data):
+    response = generate_uris.mineral_site_uri(data)
+    uri = ''
+    print(response)
+    uri = response['result']
+    return uri
+
+def document_uri(data):
+    response = generate_uris.document_uri(data)
+    uri = ''
+    uri = response['result']
+    return uri
+
+def mineral_inventory_uri(param1):
+    response = generate_uris.mineral_inventory_uri(param1)
+    uri = ''
+    uri = response['result']
+    return uri
 
 
 def is_json_file(file_path):
