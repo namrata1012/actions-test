@@ -81,7 +81,7 @@ def update_pull_request(file_content, file_path):
     # Prepare payload with the new content
     payload = {
         'message': 'Update file via GitHub Actions',
-        'content': base64.b64encode(new_content.encode()).decode(),
+        'content': file_content,
         'sha': existing_sha,
         'branch': branch,
         'path': file_path,
