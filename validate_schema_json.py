@@ -77,6 +77,8 @@ def update_pull_request(file_content, file_path):
     existing_sha = get_sha(file_content, file_path)
     branch = os.environ["GITHUB_HEAD_REF"]
 
+    url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/contents/{file_path}'
+
 
     # Prepare payload with the new content
     payload = {
