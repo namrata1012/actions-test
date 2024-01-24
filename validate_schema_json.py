@@ -74,13 +74,16 @@ def update_pull_request(file_content, file_path):
     }
 
     existing_sha = get_sha(file_content, file_path)
+    branch = os.environ["GITHUB_HEAD_REF"]
 
-# Prepare payload with the new content
+
+    # Prepare payload with the new content
     payload = {
         'message': 'Update file via GitHub Actions',
-        'content': file_content.encode('base64').decode('utf-8'),  # Encode new content in base64
-        'branch': 'main',  # Specify the branch where the pull request is located
-        'sha': existing_sha,  # Provide the existing SHA of the file (you can fetch it using GitHub API)
+        'content': base64.b64encode(new_content.encode()).decode(),
+        'sha': existing_sha,
+        'branch': branch,
+        'path': file_path,
     }
 
 # Make the API request to update the file
