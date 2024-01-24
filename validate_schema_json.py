@@ -35,9 +35,11 @@ def update_pull_request(file_content, file_path):
     pull_request_number = os.environ.get('GITHUB_REF').split('/')[-1]
     github_token = os.environ.get('GITHUB_TOKEN')
     print(github_token)
-    print(pull_request_number)
+    print(os.environ.get('GITHUB_REF'))
 
     url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/pulls/{pull_request_number}/files/{file_path}'
+
+    url2 = "https://api.github.com/repos/:owner/:repo/pulls/:number"
 
     print(url)
     headers = {'Authorization': f'token {github_token}'}
