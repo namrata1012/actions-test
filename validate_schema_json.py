@@ -32,7 +32,7 @@ def is_json_file(file_path):
 
 
 def update_pull_request(file_content, file_path):
-    pull_request_number = os.environ.get('GITHUB_REF').split('/')[-1]
+    pull_request_number = os.environ.get('GITHUB_REF').split('/')[-2]
     github_token = os.environ.get('GITHUB_TOKEN')
     print(github_token)
     print(os.environ.get('GITHUB_REF'))
