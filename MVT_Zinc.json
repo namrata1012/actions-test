@@ -42,7 +42,8 @@
               ],
               "year": 2015,
               "month": 1,
-              "description": "A technical report assessing the economic potential of the McIlvenna Bay Project in Saskatchewan, Canada with an effective date of November 12, 2014."
+              "description": "A technical report assessing the economic potential of the McIlvenna Bay Project in Saskatchewan, Canada with an effective date of November 12, 2014.",
+              "id": "https://minmod.isi.edu/resource/--preliminaryeconomicassessmenttechnicalreportmcilvennabayproject-2015-michaelmakarenkopengdarrenkennardpengmattbenderpedavidrenniepengjohnhullpenglesliecorreiapengkenmajorpeng-1-"
             },
             "page_info": [
               {
@@ -56,7 +57,8 @@
               }
             ]
           },
-          "date": "2015-1"
+          "date": "2015-1",
+          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz45306926k5v52251---preliminaryeconomicassessmenttechnicalreportmcilvennabayproject-2015-michaelmakarenkopengdarrenkennardpengmattbenderpedavidrenniepengjohnhullpenglesliecorreiapengkenmajorpeng-1--httpsminmodisieduresourceq589-httpsminmodisieduresourceindicated"
         },
         {
           "commodity": "https://minmod.isi.edu/resource/Q589",
@@ -89,7 +91,8 @@
               ],
               "year": 2015,
               "month": 1,
-              "description": "A technical report assessing the economic potential of the McIlvenna Bay Project in Saskatchewan, Canada with an effective date of November 12, 2014."
+              "description": "A technical report assessing the economic potential of the McIlvenna Bay Project in Saskatchewan, Canada with an effective date of November 12, 2014.",
+              "id": "https://minmod.isi.edu/resource/--preliminaryeconomicassessmenttechnicalreportmcilvennabayproject-2015-michaelmakarenkopengdarrenkennardpengmattbenderpedavidrenniepengjohnhullpenglesliecorreiapengkenmajorpeng-1-"
             },
             "page_info": [
               {
@@ -103,14 +106,16 @@
               }
             ]
           },
-          "date": "2015-1"
+          "date": "2015-1",
+          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz45306926k5v52251---preliminaryeconomicassessmenttechnicalreportmcilvennabayproject-2015-michaelmakarenkopengdarrenkennardpengmattbenderpedavidrenniepengjohnhullpenglesliecorreiapengkenmajorpeng-1--httpsminmodisieduresourceq589-httpsminmodisieduresourceindicated"
         }
       ],
       "deposit_type": [
         {
           "id": "https://minmod.isi.edu/resource/Q413"
         }
-      ]
+      ],
+      "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz45306926k5v52251"
     }
   ]
 }
