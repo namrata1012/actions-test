@@ -6,6 +6,8 @@ import uuid
 import os
 import generate_uris
 import base64
+import subprocess
+
 from drepr.engine import execute, DRepr, FileOutput, OutputFormat
 
 def get_sha(owner, repo, path, branch):
