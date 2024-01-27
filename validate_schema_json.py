@@ -6,20 +6,29 @@ import uuid
 import os
 import generate_uris
 
-def get_sha(file_content, file_path):
-    repository = os.environ["GITHUB_REPOSITORY"]
+def get_sha(owner, repo, path, branch):
+    # repository = os.environ["GITHUB_REPOSITORY"]
+    #
+    # url = f'https://api.github.com/repos/{repository}/contents/{file_path}'
+    #
+    # headers = {
+    #     'Authorization': f'Bearer {os.environ["GITHUB_TOKEN"]}',
+    #     'Accept': 'application/vnd.github.v3+json',
+    # }
+    #
+    # response = requests.get(url, headers=headers)
 
-# GitHub API endpoint URL
-    url = f'https://api.github.com/repos/{repository}/contents/{file_path}'
+    url = f"https://api.github.com/repos/{repo}/contents/{path}?ref={branch}"
+    print(url)
+    response = requests.get(url)
 
-# Prepare headers
-    headers = {
-        'Authorization': f'Bearer {os.environ["GITHUB_TOKEN"]}',
-        'Accept': 'application/vnd.github.v3+json',
-    }
+    if response.status_code == 200:
+        content = response.json()
+        return content['sha']
+    else:
+        print(f"Error: {response.status_code}")
+        return None
 
-# Make the API request to get file information
-    response = requests.get(url, headers=headers)
     sha = None
 
 # Check if the request was successful
@@ -79,10 +88,12 @@ def update_pull_request(file_content, file_path):
         'Authorization': f'Bearer {github_token}',
         'Content-Type': 'application/json',
     }
-    existing_sha = get_sha(file_content, file_path)
+    # owner, repo, path, branch
+    repo = os.environ["GITHUB_REPOSITORY"]
     branch = os.environ["GITHUB_HEAD_REF"]
+    existing_sha = get_sha('namrata1012', repo, file_path, branch)
     print(branch, existing_sha)
-    url = f'https://api.github.com/repos/namrata1012/{os.environ["GITHUB_REPOSITORY"]}/contents/{file_path}'
+    url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/contents/{file_path}'
     print(url)
     payload = {
         'message': 'Update file via GitHub Actions',
