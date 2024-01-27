@@ -5,6 +5,7 @@ import requests
 import uuid
 import os
 import generate_uris
+import base64
 
 def get_sha(owner, repo, path, branch):
     # repository = os.environ["GITHUB_REPOSITORY"]
@@ -95,9 +96,10 @@ def update_pull_request(file_content, file_path):
     print(branch, existing_sha)
     url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/contents/{file_path}'
     print(url)
+    encoded_content = base64.b64encode(file_content.encode()).decode()
     payload = {
         'message': 'Update file via GitHub Actions',
-        'content': file_content,
+        'content': encoded_content,
         'sha': existing_sha,
         'branch': branch
     }
