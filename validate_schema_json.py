@@ -65,6 +65,7 @@ def mineral_inventory_uri(param1):
 
 def is_json_file(file_path):
     _, file_extension = os.path.splitext(file_path)
+    print(_)
     return file_extension.lower() == '.json'
 
 
