@@ -6,6 +6,7 @@ import uuid
 import os
 import generate_uris
 import base64
+from drepr.engine import execute, DRepr, FileOutput, OutputFormat
 
 def get_sha(owner, repo, path, branch):
     # repository = os.environ["GITHUB_REPOSITORY"]
@@ -327,6 +328,13 @@ for file_path in changed_files:
                             document['id'] = mndr_url + document_uri(doc_data)
 
 
+        command = 'python -m drepr -r model.yml -d default="inferlink/MVT_Zinc.json" -o "abc.ttl"'
+        try:
+            result = subprocess.run(command, shell=True, check=True, text=True)
+            print("Command output:", result.stdout)
+        except subprocess.CalledProcessError as e:
+            print("Error executing command:", e)
+            print("Command output (if any):", e.output)
         update_pull_request(json.dumps(json_data, indent=2), file_path)
 
 
