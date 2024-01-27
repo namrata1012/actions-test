@@ -64,22 +64,26 @@ def update_pull_request(file_content, file_path):
     print(github_token)
     print(os.environ.get('GITHUB_REF'))
 
-    url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/pulls/{pull_request_number}/files/{file_path}'
+    url = f'https://api.github.com/repos/namrata1012/{os.environ["GITHUB_REPOSITORY"]}/pulls/{pull_request_number}/files/{file_path}'
 
     url2 = "https://api.github.com/repos/:owner/:repo/pulls/:number"
 
-    print(url)
+# curl -L \
+# -X PUT \
+#    -H "Accept: application/vnd.github+json" \
+#       -H "Authorization: Bearer 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" \
+#          -H "X-GitHub-Api-Version: 2022-11-28" \
+#     https://api.github.com/repos/namrata1012/actions-test/contents/abc.json \
+#             -d '{"message":"my commit message”, “branch”:”test-pr" ,”committer":{"name":"Monalisa Octocat","email":"octocat@github.com"},"content":"bXkgbmV3IGZpbGUgY29udGVudHM="}'
     headers = {
         'Authorization': f'Bearer {github_token}',
         'Content-Type': 'application/json',
     }
-
     existing_sha = get_sha(file_content, file_path)
     branch = os.environ["GITHUB_HEAD_REF"]
-
+    print(branch, existing_sha)
     url = f'https://api.github.com/repos/namrata1012/{os.environ["GITHUB_REPOSITORY"]}/contents/{file_path}'
-
-    # Prepare payload with the new content
+    print(url)
     payload = {
         'message': 'Update file via GitHub Actions',
         'content': file_content,
