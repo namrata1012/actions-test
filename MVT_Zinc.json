@@ -3,7 +3,7 @@
     {
       "source_id": "https://w3id.org/usgs/z/4530692/R49Z8F3P",
       "record_id": 1,
-      "name": "Competent person’s report for the Reocín Mine and San Juan de Nieva zinc assets held by Asturiana de Zinc S.L.",
+      "name": "Competent person\u2019s report for the Reoc\u00edn Mine and San Juan de Nieva zinc assets held by Asturiana de Zinc S.L.",
       "location_info": {
         "country": "Spain",
         "state_or_province": "Cantabria"
@@ -24,9 +24,10 @@
           "reference": {
             "id": 0,
             "document": {
-              "title": "competent person’s report for the reocín mine and san juan de nieva zinc assets held by asturiana de zinc s.l.",
+              "title": "competent person\u2019s report for the reoc\u00edn mine and san juan de nieva zinc assets held by asturiana de zinc s.l.",
               "month": 3,
-              "year": 2002
+              "year": 2002,
+              "id": "https://minmod.isi.edu/resource/--competentpersonsreportforthereoc\u00ednmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3-"
             },
             "page_info": [
               {
@@ -34,7 +35,8 @@
               }
             ]
           },
-          "date": "2002-03-03"
+          "date": "2002-03-03",
+          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p1---competentpersonsreportforthereoc\u00ednmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3--httpsminmodisieduresourceq589-httpsminmodisieduresourcemeasured"
         },
         {
           "commodity": "https://minmod.isi.edu/resource/Q589",
@@ -52,11 +54,11 @@
             "id": 1,
             "document": {
               "doi": "https://w3id.org/usgs/z/4530692/R49Z8F3P",
-              "title": "competent person’s report for the reocín mine and san juan de nieva zinc assets held by asturiana de zinc s.l.",
+              "title": "competent person\u2019s report for the reoc\u00edn mine and san juan de nieva zinc assets held by asturiana de zinc s.l.",
               "uri": "",
               "month": 3,
               "year": 2002,
-              "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p--competentpersonsreportforthereocínmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3-"
+              "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p--competentpersonsreportforthereoc\u00ednmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3-"
             },
             "page_info": [
               {
@@ -70,14 +72,16 @@
               }
             ]
           },
-          "date": "2002-03-03"
+          "date": "2002-03-03",
+          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p1-httpsw3idorgusgsz4530692r49z8f3p--competentpersonsreportforthereoc\u00ednmineandsanjuandenievazincassetsheldbyasturianadezincsl-2002--3--httpsminmodisieduresourceq589-httpsminmodisieduresourceclassification"
         }
       ],
       "deposit_type": [
         {
           "id": "https://minmod.isi.edu/resource/Q375"
         }
-      ]
+      ],
+      "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz4530692r49z8f3p1"
     }
   ]
 }
