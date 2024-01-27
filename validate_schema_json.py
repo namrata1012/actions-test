@@ -64,9 +64,14 @@ def mineral_inventory_uri(param1):
 
 
 def is_json_file(file_path):
-    _, file_extension = os.path.splitext(file_path)
-    print(_)
-    return file_extension.lower() == '.json'
+    path, file_extension = os.path.splitext(file_path)
+    print(str(path))
+    split_path = path.split('/')
+    is_under_data_folder = False
+    if len(split_path) == 2 and split_path[0] == 'inferlink':
+        is_under_data_folder = True
+
+    return is_under_data_folder and file_extension.lower() == '.json'
 
 
 def update_pull_request(file_content, file_path):
