@@ -69,6 +69,7 @@ def is_json_file(file_path):
     split_path = path.split('/')
     is_under_data_folder = False
     if len(split_path) == 2 and split_path[0] == 'inferlink':
+        print('This is under data folder')
         is_under_data_folder = True
 
     return is_under_data_folder and file_extension.lower() == '.json'
