@@ -37,4 +37,10 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Trigger Second Workflow
+        uses: actions/workflow_run@v2
+        with:
+          workflow: Second Workflow
+          token: ${{ secrets.GITHUB_TOKEN }}
+
 
