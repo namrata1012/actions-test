@@ -108,7 +108,7 @@ def create_drepr_update_github(file_path, filename):
         'message': 'Update file via GitHub Actions',
         'content': encoded_content,
         'branch': branch,
-        'sha':existing_sha
+        'sha':None
     }
 
     # Make the API request to update the file
