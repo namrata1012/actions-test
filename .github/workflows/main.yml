@@ -1,4 +1,4 @@
-name: Run Python Script on Pull Request
+name: Run
 
 on:
   pull_request:

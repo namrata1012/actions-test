@@ -1,9 +1,10 @@
 name: Second Workflow
 
 on:
-  workflow:
+  workflow_run:
+    workflows: ["Run"]
     types:
-      - triggered
+      - completed
 
 jobs:
   second_job:
