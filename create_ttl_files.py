@@ -10,16 +10,6 @@ import subprocess
 import validate_pyshacl
 
 def get_sha(owner, repo, path, branch):
-    # repository = os.environ["GITHUB_REPOSITORY"]
-    #
-    # url = f'https://api.github.com/repos/{repository}/contents/{file_path}'
-    #
-    # headers = {
-    #     'Authorization': f'Bearer {os.environ["GITHUB_TOKEN"]}',
-    #     'Accept': 'application/vnd.github.v3+json',
-    # }
-    #
-    # response = requests.get(url, headers=headers)
 
     url = f"https://api.github.com/repos/{repo}/contents/{path}?ref={branch}"
     print(url)
@@ -105,7 +95,7 @@ def create_drepr_update_github(file_path, filename):
     existing_sha = get_sha('namrata1012', repo, file_path, branch)
     file_content = run_drepr_on_file(file_path)
 
-    validated_drepr = validate_pyshacl.validate(file_content)
+    validated_drepr = validate_pyshacl.validate_ttl(file_content)
 
     if not validated_drepr:
         print('Validation failed for pyshacl')
