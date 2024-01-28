@@ -106,7 +106,7 @@ def create_drepr_update_github(file_path, filename):
     file_content = run_drepr_on_file(file_path)
 
     validated_drepr = validate_pyshacl.validate(file_content)
-    
+
     if not validated_drepr:
         print('Validation failed for pyshacl')
         raise
