@@ -13,7 +13,9 @@
       "MineralInventory": [
         {
           "commodity": "https://minmod.isi.edu/resource/Q589",
+
           "category": "https://minmod.isi.edu/resource/indicated",
+          
           "ore": {
             "ore_unit": "https://minmod.isi.edu/resource/Q200",
             "ore_value": 10200000
