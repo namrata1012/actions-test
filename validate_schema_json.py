@@ -6,7 +6,7 @@ import uuid
 import os
 import generate_uris
 
-def get_sha(file_content, file_path):
+def get_sha(file_path):
     repository = os.environ["GITHUB_REPOSITORY"]
 
 # GitHub API endpoint URL
@@ -102,7 +102,7 @@ def update_pull_request(file_content, file_path):
     # owner, repo, path, branch
     repo = os.environ["GITHUB_REPOSITORY"]
     branch = os.environ["GITHUB_HEAD_REF"]
-    existing_sha = get_sha('namrata1012', repo, file_path, branch)
+    existing_sha = get_sha(file_path)
 
     path, file_extension = os.path.splitext(file_path)
     split_path = path.split('/')
