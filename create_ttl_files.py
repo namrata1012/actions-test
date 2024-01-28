@@ -28,7 +28,7 @@ def file_datasource(file_path):
 
     return ''
 
-def run_drepr_on_file(file_path, datasource)
+def run_drepr_on_file(file_path, datasource):
     destination = 'generated_files/ttl_files/'
     model_file = 'model.yml'
     command = f' python -m drepr -r {model_file} -d default={datasource}'
