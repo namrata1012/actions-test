@@ -109,7 +109,7 @@ def update_pull_request(file_content, file_path):
     split_path = path.split('/')
     filename = split_path[-1]
 
-    generated_json_path = f'generated_files/json_files/{filename}'
+    generated_json_path = f'generated_files/json_files/{filename}.json'
 
     print(branch, existing_sha)
     url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/contents/{generated_json_path}'
