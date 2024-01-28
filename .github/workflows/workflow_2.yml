@@ -21,7 +21,7 @@ jobs:
     - name: Run your workflow only on changed files
       run: |
         # Get the list of changed files in the pull request
-        changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+        changed_files=$(git diff --name-only HEAD^ HEAD)
 
         # Run your workflow commands only on changed files
         echo "Changed files: $changed_files"
