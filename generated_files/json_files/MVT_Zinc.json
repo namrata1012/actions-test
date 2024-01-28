@@ -13,7 +13,9 @@
       "MineralInventory": [
         {
           "commodity": "https://minmod.isi.edu/resource/Q589",
-          "category": ["https://minmod.isi.edu/resource/indicated"],
+          "category": [
+            "https://minmod.isi.edu/resource/indicated"
+          ],
           "ore": {
             "ore_unit": "https://minmod.isi.edu/resource/Q200",
             "ore_value": 102000
@@ -41,10 +43,7 @@
                 "Ken Major P. Eng."
               ],
               "year": 2015,
-
               "month": 1,
-
-
               "description": "A technical report assessing the economic potential of the McIlvenna Bay Project in Saskatchewan, Canada with an effective date of November 12, 2014.",
               "id": "https://minmod.isi.edu/resource/--preliminaryeconomicassessmenttechnicalreportmcilvennabayproject-2015-michaelmakarenkopengdarrenkennardpengmattbenderpedavidrenniepengjohnhullpenglesliecorreiapengkenmajorpeng-1-"
             },
@@ -65,7 +64,9 @@
         },
         {
           "commodity": "https://minmod.isi.edu/resource/Q589",
-          "category": ["https://minmod.isi.edu/resource/indicated"],
+          "category": [
+            "https://minmod.isi.edu/resource/indicated"
+          ],
           "ore": {
             "ore_unit": "https://minmod.isi.edu/resource/Q200",
             "ore_value": 12700000
