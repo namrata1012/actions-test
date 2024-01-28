@@ -49,6 +49,11 @@ def run_drepr_on_file(file_path, datasource):
         return ''
 
 def create_drepr_update_github(file_path, filename):
+    pull_request_number = os.environ.get('GITHUB_REF').split('/')[-2]
+    github_token = os.environ.get('GITHUB_TOKEN')
+    print(github_token)
+    print(os.environ.get('GITHUB_REF'))
+
     generated_ttl_path = f'generated_files/ttl_files/{filename}.ttl'
     headers = {
         'Authorization': f'Bearer {github_token}',
