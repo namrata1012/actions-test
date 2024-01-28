@@ -94,5 +94,5 @@ for file_path in changed_files:
     split_path = path.split('/')
     filename = split_path[-1]
     if is_json_file(file_path):
-        generated_json_path = f'generated_files/json_files/{filename}.json'
+        generated_json_path = f'/generated_files/json_files/{filename}.json'
         create_drepr_update_github(generated_json_path, filename)
