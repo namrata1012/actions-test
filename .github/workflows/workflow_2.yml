@@ -18,4 +18,4 @@ jobs:
         path: .
 
     - name: Use Commit ID
-      run: echo "The commit ID is: $(cat commit-id)"
+      run: echo "$(cat commit-id)"
