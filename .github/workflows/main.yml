@@ -37,6 +37,16 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+    - name: Extract Commit ID
+      id: extract_commit_id
+      run: echo "::set-output name=commit_id::$(git rev-parse HEAD)"
+
+    - name: Upload Commit ID as Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: commit-id
+        path: ${{ steps.extract_commit_id.outputs.commit_id }}
+
 
 
 #  notify:
