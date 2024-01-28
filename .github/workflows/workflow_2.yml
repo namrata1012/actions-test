@@ -1,10 +1,9 @@
 name: Second Workflow
 
 on:
-  workflow_run:
-    workflows: ["Run Python Script on Pull Request"]
+  workflow:
     types:
-      - completed
+      - triggered
 
 jobs:
   second_job:
