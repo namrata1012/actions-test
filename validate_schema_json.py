@@ -66,6 +66,7 @@ def mineral_inventory_uri(param1):
     return uri
 
 
+
 def is_json_file(file_path):
     path, file_extension = os.path.splitext(file_path)
     print(str(path))
@@ -103,14 +104,20 @@ def update_pull_request(file_content, file_path):
     repo = os.environ["GITHUB_REPOSITORY"]
     branch = os.environ["GITHUB_HEAD_REF"]
     existing_sha = get_sha('namrata1012', repo, file_path, branch)
+
+    path, file_extension = os.path.splitext(file_path)
+    split_path = path.split('/')
+    filename = split_path[-1]
+
+    generated_json_path = f'generated_files/json_files/{filename}'
+
     print(branch, existing_sha)
-    url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/contents/{file_path}'
+    url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/contents/{generated_json_path}'
     print(url)
     encoded_content = base64.b64encode(file_content.encode()).decode()
     payload = {
         'message': 'Update file via GitHub Actions',
         'content': encoded_content,
-        'sha': existing_sha,
         'branch': branch
     }
 
