@@ -7,6 +7,7 @@ import os
 import generate_uris
 import base64
 import subprocess
+import validate_pyshacl
 
 def get_sha(owner, repo, path, branch):
     # repository = os.environ["GITHUB_REPOSITORY"]
@@ -103,6 +104,13 @@ def create_drepr_update_github(file_path, filename):
     print(url)
     existing_sha = get_sha('namrata1012', repo, file_path, branch)
     file_content = run_drepr_on_file(file_path)
+
+    validated_drepr = validate_pyshacl.validate(file_content)
+    
+    if not validated_drepr:
+        print('Validation failed for pyshacl')
+        raise
+
     encoded_content = base64.b64encode(file_content.encode()).decode()
     payload = {
         'message': 'Update file via GitHub Actions',
