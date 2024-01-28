@@ -16,7 +16,7 @@ jobs:
         fetch-depth: 0  # Fetch all history
 
     - name: Fetch all commit history
-      run: git fetch --prune --unshallow
+      run: git fetch --prune
 
     - name: Run your workflow only on changed files
       run: |
