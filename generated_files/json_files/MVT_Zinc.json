@@ -13,10 +13,12 @@
       "MineralInventory": [
         {
           "commodity": "https://minmod.isi.edu/resource/Q589",
-          "category": "https://minmod.isi.edu/resource/indicated",
+          "category": [
+            "https://minmod.isi.edu/resource/indicated"
+          ],
           "ore": {
             "ore_unit": "https://minmod.isi.edu/resource/Q200",
-            "ore_value": 10200000
+            "ore_value": 102000
           },
           "grade": {
             "grade_unit": "https://minmod.isi.edu/resource/Q201",
@@ -26,7 +28,7 @@
             "grade_unit": "https://minmod.isi.edu/resource/Q206",
             "grade_value": 75
           },
-          "contained_metal": 276.42,
+          "contained_metal": 276.2,
           "reference": {
             "id": 1,
             "document": {
@@ -62,7 +64,9 @@
         },
         {
           "commodity": "https://minmod.isi.edu/resource/Q589",
-          "category": "https://minmod.isi.edu/resource/indicated",
+          "category": [
+            "https://minmod.isi.edu/resource/indicated"
+          ],
           "ore": {
             "ore_unit": "https://minmod.isi.edu/resource/Q200",
             "ore_value": 12700000

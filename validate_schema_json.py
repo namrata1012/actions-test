@@ -6,33 +6,21 @@ import uuid
 import os
 import generate_uris
 import base64
-import subprocess
 
-from drepr.engine import execute, DRepr, FileOutput, OutputFormat
+def get_sha(file_path):
+    repository = os.environ["GITHUB_REPOSITORY"]
 
-def get_sha(owner, repo, path, branch):
-    # repository = os.environ["GITHUB_REPOSITORY"]
-    #
-    # url = f'https://api.github.com/repos/{repository}/contents/{file_path}'
-    #
-    # headers = {
-    #     'Authorization': f'Bearer {os.environ["GITHUB_TOKEN"]}',
-    #     'Accept': 'application/vnd.github.v3+json',
-    # }
-    #
-    # response = requests.get(url, headers=headers)
+# GitHub API endpoint URL
+    url = f'https://api.github.com/repos/{repository}/contents/{file_path}'
 
-    url = f"https://api.github.com/repos/{repo}/contents/{path}?ref={branch}"
-    print(url)
-    response = requests.get(url)
+# Prepare headers
+    headers = {
+        'Authorization': f'Bearer {os.environ["GITHUB_TOKEN"]}',
+        'Accept': 'application/vnd.github.v3+json',
+    }
 
-    if response.status_code == 200:
-        content = response.json()
-        return content['sha']
-    else:
-        print(f"Error: {response.status_code}")
-        return None
-
+# Make the API request to get file information
+    response = requests.get(url, headers=headers)
     sha = None
 
 # Check if the request was successful
@@ -56,12 +44,14 @@ def mineral_site_uri(data):
 def document_uri(data):
     response = generate_uris.document_uri(data)
     uri = ''
+    print(response)
     uri = response['result']
     return uri
 
 def mineral_inventory_uri(param1):
     response = generate_uris.mineral_inventory_uri(param1)
     uri = ''
+    print(response)
     uri = response['result']
     return uri
 
@@ -88,62 +78,6 @@ def file_datasource(file_path):
     return ''
 
 
-def run_drepr_on_file(datasource):
-    destination = 'generated_files/ttl_files/'
-    model_file = 'model.yml'
-    command = f' python -m drepr -r {model_file} -d default="generated_files/json_files/MVT_Zinc.json"'
-    print('Running ... ', command)
-
-    # Run the command
-    try:
-        result = subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
-        output_lines = result.stdout.splitlines()[2:]  # Skip the first two lines
-        return '\n'.join(output_lines)
-
-        # Replace 'output_file.txt' with the desired file name
-        #     with open('output_file.txt', 'w') as file:
-        #         file.write('\n'.join(output_lines))
-        print("Command output (skipping first two lines) written to 'output_file.txt'")
-    except subprocess.CalledProcessError as e:
-        print("Error executing command:", e)
-        print("Command output (if any):", e.output)
-        return ''
-
-def create_drepr_update_github(file_path, filename):
-    pull_request_number = os.environ.get('GITHUB_REF').split('/')[-2]
-    github_token = os.environ.get('GITHUB_TOKEN')
-    print(github_token)
-    print(os.environ.get('GITHUB_REF'))
-
-    generated_ttl_path = f'generated_files/ttl_files/{filename}.ttl'
-    headers = {
-        'Authorization': f'Bearer {github_token}',
-        'Content-Type': 'application/json',
-    }
-    # owner, repo, path, branch
-    repo = os.environ["GITHUB_REPOSITORY"]
-    branch = os.environ["GITHUB_HEAD_REF"]
-    url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/contents/{generated_ttl_path}'
-    print(url)
-    existing_sha = get_sha('namrata1012', repo, file_path, branch)
-    file_content = run_drepr_on_file(file_path)
-    encoded_content = base64.b64encode(file_content.encode()).decode()
-    payload = {
-        'message': 'Update file via GitHub Actions',
-        'content': encoded_content,
-        'branch': branch,
-        'sha':existing_sha
-    }
-
-    # Make the API request to update the file
-    response = requests.put(url, headers=headers, json=payload)
-
-    if response.status_code == 200 or response.status_code == 201:
-        print(f'Successfully updated file in pull request #{pull_request_number}')
-    else:
-        print(f'Failed to update file. Status code: {response.status_code}, Response: {response.text}')
-
-    return
 
 def update_pull_request(file_content, file_path):
     pull_request_number = os.environ.get('GITHUB_REF').split('/')[-2]
@@ -151,7 +85,7 @@ def update_pull_request(file_content, file_path):
     print(github_token)
     print(os.environ.get('GITHUB_REF'))
 
-    url = f'https://api.github.com/repos/namrata1012/{os.environ["GITHUB_REPOSITORY"]}/pulls/{pull_request_number}/files/{file_path}'
+    url = f'https://api.github.com/repos/{os.environ["GITHUB_REPOSITORY"]}/pulls/{pull_request_number}/files/{file_path}'
 
     url2 = "https://api.github.com/repos/:owner/:repo/pulls/:number"
 
@@ -169,7 +103,7 @@ def update_pull_request(file_content, file_path):
     # owner, repo, path, branch
     repo = os.environ["GITHUB_REPOSITORY"]
     branch = os.environ["GITHUB_HEAD_REF"]
-    existing_sha = get_sha('namrata1012', repo, file_path, branch)
+    existing_sha = get_sha(file_path)
 
     path, file_extension = os.path.splitext(file_path)
     split_path = path.split('/')
@@ -184,8 +118,8 @@ def update_pull_request(file_content, file_path):
     payload = {
         'message': 'Update file via GitHub Actions',
         'content': encoded_content,
-        'branch': branch,
-        'sha':existing_sha
+        'sha': existing_sha,
+        'branch': branch
     }
 
 # Make the API request to update the file
@@ -255,7 +189,10 @@ def process_files(filename):
                                 "type": "object",
                                 "properties": {
                                     "id": {"type": "string"},
-                                    "category": {"type": "string"},
+                                    "category": {
+                                        "type": "array",
+                                        "items": {"type": "string"}
+                                    },
                                     "contained_metal": {"type": "number"},
                                     "reference": {
                                         "type": "object",
