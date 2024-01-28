@@ -1,21 +1,30 @@
-name: Workflow 2
+name: WorkflowOnMerge
 
 on:
-  workflow_run:
-    workflows: ["Run Tests"]
+  pull_request:
     types:
-      - completed
+      - closed
 
 jobs:
-  use-commit-id:
+  process-changes:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Download Commit ID Artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: commit-id
-        path: .
+    - name: Check out the code
+      uses: actions/checkout@v2
 
-    - name: Use Commit ID
-      run: echo "$(cat commit-id)"
+    - name: Run your workflow only on changed files
+      run: |
+        # Get the list of changed files in the pull request
+        changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+
+        # Run your workflow commands only on changed files
+        echo "Changed files: $changed_files"
+
+        # Add your workflow steps here that need to be executed on changed files
+        for changed_file in ${changed_files}; do
+          python create_ttl_files.py ${changed_file}
+        done
+        
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
