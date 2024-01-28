@@ -37,11 +37,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - id: files_2
-      uses: jitterbit/get-changed-files@v1
-    - run: |
-        for changed_file in ${{ steps.files.outputs.all }}; do
-          python create_ttl_files.py ${changed_file}
-        done
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
