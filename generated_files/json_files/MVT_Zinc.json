@@ -6,14 +6,14 @@
       "name": "Competent person\u2019s report for the Reoc\u00edn Mine and San Juan de Nieva zinc assets held by Asturiana de Zinc S.L.",
       "location_info": {
         "location": "POINT(-102.83333 54.63333)",
-        "crs": "WGS84",
+        "crs": "WGS85",
         "country": "Canada",
         "state_or_province": "Saskatchewan"
       },
       "MineralInventory": [
         {
           "commodity": "https://minmod.isi.edu/resource/Q589",
-          "category": "https://minmod.isi.edu/resource/indicated",
+          "category": ["https://minmod.isi.edu/resource/indicated"],
           "ore": {
             "ore_unit": "https://minmod.isi.edu/resource/Q200",
             "ore_value": 10200000
@@ -62,7 +62,7 @@
         },
         {
           "commodity": "https://minmod.isi.edu/resource/Q589",
-          "category": "https://minmod.isi.edu/resource/indicated",
+          "category": ["https://minmod.isi.edu/resource/indicated"],
           "ore": {
             "ore_unit": "https://minmod.isi.edu/resource/Q200",
             "ore_value": 12700000
