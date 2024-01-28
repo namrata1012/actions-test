@@ -118,7 +118,8 @@ def update_pull_request(file_content, file_path):
     payload = {
         'message': 'Update file via GitHub Actions',
         'content': encoded_content,
-        'branch': branch
+        'branch': branch,
+        'sha':existing_sha
     }
 
 # Make the API request to update the file
