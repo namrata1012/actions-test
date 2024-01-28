@@ -12,6 +12,11 @@ jobs:
     steps:
     - name: Check out the code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0  # Fetch all history
+
+    - name: Fetch all commit history
+      run: git fetch --prune --unshallow
 
     - name: Run your workflow only on changed files
       run: |
