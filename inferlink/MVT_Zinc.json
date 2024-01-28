@@ -16,7 +16,7 @@
           "category": "https://minmod.isi.edu/resource/indicated",
           "ore": {
             "ore_unit": "https://minmod.isi.edu/resource/Q200",
-            "ore_value": 10200000
+            "ore_value": 102000
           },
           "grade": {
             "grade_unit": "https://minmod.isi.edu/resource/Q201",
