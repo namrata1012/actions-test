@@ -1,13 +1,13 @@
-name: Second Workflow
+name: Workflow 2
 
 on:
   workflow_run:
-    workflows: [Run Tests]
+    workflows: ["Run Tests"]
     types:
       - completed
 
 jobs:
-  second_job:
+  use-commit-id:
     runs-on: ubuntu-latest
 
     steps:
