@@ -5,6 +5,7 @@ import requests
 import uuid
 import os
 import generate_uris
+import base64
 
 def get_sha(file_path):
     repository = os.environ["GITHUB_REPOSITORY"]
