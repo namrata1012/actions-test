@@ -31,7 +31,7 @@ def file_datasource(file_path):
 def run_drepr_on_file(datasource):
     destination = 'generated_files/ttl_files/'
     model_file = 'model.yml'
-    command = f' python -m drepr -r {model_file} -d default="generated_files/json_files/MVT_Zinc.json"'
+    command = f' python -m drepr -r {model_file} -d default="{datasource}"'
     print('Running ... ', command)
 
 # Run the command
