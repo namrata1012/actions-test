@@ -2,7 +2,7 @@ name: Second Workflow
 
 on:
   workflow_run:
-    workflows: ["run_python_script"]
+    workflows: [Run Tests]
     types:
       - completed
 
