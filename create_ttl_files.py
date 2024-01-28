@@ -25,8 +25,8 @@ def file_datasource(file_path):
     if len(split_path) == 2 and split_path[0] == 'inferlink':
         print('This is under data folder')
         return split_path[0]
-
     return ''
+
 
 def run_drepr_on_file(file_path, datasource):
     destination = 'generated_files/ttl_files/'
@@ -89,4 +89,4 @@ for file_path in changed_files:
     filename = split_path[-1]
     if is_json_file(file_path):
         generated_json_path = f'generated_files/json_files/{filename}'
-        create_drepr_update_github(generated_json_path)
+        create_drepr_update_github(generated_json_path, filename)
