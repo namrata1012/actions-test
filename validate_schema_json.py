@@ -6,7 +6,7 @@ import uuid
 import os
 import generate_uris
 import base64
-
+import create_ttl_files
 def get_sha(file_path):
     repository = os.environ["GITHUB_REPOSITORY"]
 
@@ -341,6 +341,10 @@ if is_json_file(file_path):
 
 
     update_pull_request(json.dumps(json_data, indent=2), file_path)
+    with open(temp_file, 'a') as file:
+    # Write the new data to the file
+        file.write(json.dumps(json_data, indent=2) + '\n')
+    create_ttl_files.create_drepr_from_workflow1(temp_file)
 
 
 
