@@ -17,7 +17,12 @@ jobs:
       run: echo "${{ github.event.inputs.branch_name }}"
 
     - name: Print Branch Name from Workflow1
-      run: echo "${{fromJson(needs.Workflow1.outputs.outputs).branch-name}}"
+      run: |
+        echo "${{(needs)}}"
+        echo "${{fromJson(needs)}}"
+        echo "${{fromJson(needs.Workflow1)}}"
+        echo "${{fromJson(needs.Workflow1).branch-name}}"
+        echo "${{fromJson(needs.Workflow1.outputs.outputs).branch-name}}"
 
     - name: Print branch name
       run: echo "${{ env.BRANCH_NAME }}"
