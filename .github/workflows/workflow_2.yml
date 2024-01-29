@@ -3,7 +3,7 @@ name: Workflow 2
 
 on:
   workflow_run:
-    workflows: [Run Tests]
+    workflows: [Workflow1]
     types:
       - completed
 
@@ -16,11 +16,13 @@ jobs:
     - name: Print branch name
       run: echo "${{ github.event.inputs.branch_name }}"
 
-    - name: Download artifact
+    - name: Download Workflow1 Outputs
       uses: actions/download-artifact@v2
       with:
-        name: my-artifact
-        path: .
+        name: workflow1-results
+
+    - name: Print Branch Name from Workflow1
+      run: echo "${{fromJson(needs.Workflow1.outputs.outputs).branch-name}}"
 
     - name: Print branch name
       run: echo "${{ env.BRANCH_NAME }}"
