@@ -57,7 +57,7 @@ def file_datasource(file_path):
 def run_drepr_on_file(datasource):
     destination = 'generated_files/ttl_files/'
     model_file = 'model.yml'
-    command = f' python -m drepr -r {model_file} -d default="generated_files/json_files/MVT_Zinc.json"'
+    command = f' python -m drepr -r {model_file} -d default="${datasource}"'
     print('Running ... ', command)
 
     try:
@@ -120,6 +120,7 @@ def create_drepr_update_github(file_path, filename):
     return
 
 def create_drepr_from_workflow1(file_path):
+    print('In the 2nd file')
     path, file_extension = os.path.splitext(file_path)
     split_path = path.split('/')
     filename = split_path[-1]
