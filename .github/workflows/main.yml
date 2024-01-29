@@ -49,22 +49,7 @@ jobs:
         name: my-artifact
         path: artifact.txt
 
-    - name: Trigger Workflow 2
-      uses: actions/github-script@v5
-      with:
-        script: |
-          const response = await github.actions.createWorkflowDispatch({
-            workflow: 'workflow_2.yml',
-            ref: 'main',
-            inputs: {
-              branch_name: process.env.BRANCH_NAME
-              }
-          });
-          console.log(response.data);
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
+    
 #  notify:
 #    needs: run_python_script
 #    runs-on: ubuntu-latest
