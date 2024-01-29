@@ -17,6 +17,7 @@ jobs:
 
     - name: Print Branch Name from Workflow1
       run: |
+        echo "Branch Name from Workflow1: ${{fromJson(needs.Workflow1.outputs.outputs).branch-name}}"
         echo "${{(needs)}}"
         echo "${{fromJson(needs)}}"
         echo "${{fromJson(needs.Workflow1)}}"
