@@ -1,0 +1,125 @@
+{
+  "MineralSite": [
+    {
+      "source_id": "https://w3id.org/usgs/z/4530692/6K5V5225",
+      "record_id": 1,
+      "name": "Competent person\u2019s report for the Reoc\u00edn Mine and San Juan de Nieva zinc assets held by Asturiana de Zinc S.L.",
+      "location_info": {
+        "location": "POINT(-102.83333 54.63333)",
+        "crs": "WGS84",
+        "country": "USA",
+        "state_or_province": "NY"
+      },
+      "MineralInventory": [
+        {
+          "commodity": "https://minmod.isi.edu/resource/Q589",
+          "category": [
+            "https://minmod.isi.edu/resource/indicated"
+          ],
+          "ore": {
+            "ore_unit": "https://minmod.isi.edu/resource/Q200",
+            "ore_value": 102000
+          },
+          "grade": {
+            "grade_unit": "https://minmod.isi.edu/resource/Q201",
+            "grade_value": 2.71
+          },
+          "cutoff_grade": {
+            "grade_unit": "https://minmod.isi.edu/resource/Q206",
+            "grade_value": 75
+          },
+          "contained_metal": 276.2,
+          "reference": {
+            "id": 1,
+            "document": {
+              "title": "Preliminary Economic Assessment Technical Report McIlvenna Bay Project",
+              "authors": [
+                "Michael Makarenko P. Eng.",
+                "Darren Kennard P. Eng.",
+                "Matt Bender P.E.",
+                "David Rennie P. Eng.",
+                "John Hull P. Eng.",
+                "Leslie Correia P. Eng.",
+                "Ken Major P. Eng."
+              ],
+              "year": 2015,
+              "month": 1,
+              "description": "A technical report assessing the economic potential of the McIlvenna Bay Project in Saskatchewan, Canada with an effective date of November 12, 2014.",
+              "id": "https://minmod.isi.edu/resource/--preliminaryeconomicassessmenttechnicalreportmcilvennabayproject-2015-michaelmakarenkopengdarrenkennardpengmattbenderpedavidrenniepengjohnhullpenglesliecorreiapengkenmajorpeng-1-"
+            },
+            "page_info": [
+              {
+                "page": 30,
+                "bounding_box": {
+                  "x_min": "",
+                  "x_max": "",
+                  "y_min": "",
+                  "y_max": ""
+                }
+              }
+            ]
+          },
+          "date": "2015-1",
+          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz45306926k5v52251---preliminaryeconomicassessmenttechnicalreportmcilvennabayproject-2015-michaelmakarenkopengdarrenkennardpengmattbenderpedavidrenniepengjohnhullpenglesliecorreiapengkenmajorpeng-1--httpsminmodisieduresourceq589-httpsminmodisieduresourceindicated"
+        },
+        {
+          "commodity": "https://minmod.isi.edu/resource/Q589",
+          "category": [
+            "https://minmod.isi.edu/resource/indicated"
+          ],
+          "ore": {
+            "ore_unit": "https://minmod.isi.edu/resource/Q200",
+            "ore_value": 12700000
+          },
+          "grade": {
+            "grade_unit": "https://minmod.isi.edu/resource/Q201",
+            "grade_value": 2.73
+          },
+          "cutoff_grade": {
+            "grade_unit": "https://minmod.isi.edu/resource/Q206",
+            "grade_value": 65
+          },
+          "contained_metal": 346.71,
+          "reference": {
+            "id": 1,
+            "document": {
+              "title": "Preliminary Economic Assessment Technical Report McIlvenna Bay Project",
+              "authors": [
+                "Michael Makarenko P. Eng.",
+                "Darren Kennard P. Eng.",
+                "Matt Bender P.E.",
+                "David Rennie P. Eng.",
+                "John Hull P. Eng.",
+                "Leslie Correia P. Eng.",
+                "Ken Major P. Eng."
+              ],
+              "year": 2015,
+              "month": 1,
+              "description": "A technical report assessing the economic potential of the McIlvenna Bay Project in Saskatchewan, Canada with an effective date of November 12, 2014.",
+              "id": "https://minmod.isi.edu/resource/--preliminaryeconomicassessmenttechnicalreportmcilvennabayproject-2015-michaelmakarenkopengdarrenkennardpengmattbenderpedavidrenniepengjohnhullpenglesliecorreiapengkenmajorpeng-1-"
+            },
+            "page_info": [
+              {
+                "page": 26,
+                "bounding_box": {
+                  "x_min": "",
+                  "x_max": "",
+                  "y_min": "",
+                  "y_max": ""
+                }
+              }
+            ]
+          },
+          "date": "2015-1",
+          "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz45306926k5v52251---preliminaryeconomicassessmenttechnicalreportmcilvennabayproject-2015-michaelmakarenkopengdarrenkennardpengmattbenderpedavidrenniepengjohnhullpenglesliecorreiapengkenmajorpeng-1--httpsminmodisieduresourceq589-httpsminmodisieduresourceindicated"
+        }
+      ],
+      "deposit_type": [
+        {
+          "id": "https://minmod.isi.edu/resource/Q413"
+        }
+      ],
+      "id": "https://minmod.isi.edu/resource/httpsw3idorgusgsz45306926k5v52251"
+    }
+  ]
+}
