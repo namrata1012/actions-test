@@ -23,6 +23,8 @@ def get_sha(file_path):
     response = requests.get(url, headers=headers)
     sha = None
 
+    print(url)
+
 # Check if the request was successful
     if response.status_code == 200:
     # File exists, update it
