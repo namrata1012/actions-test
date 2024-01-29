@@ -291,9 +291,10 @@ def process_files(filename):
 
 
 changed_files = sys.argv[1:]
+temp_file = sys.argv[2]
 
 print('Running this')
-print(changed_files)
+print(changed_files, temp_file)
 
 for file_path in changed_files:
     if is_json_file(file_path):
