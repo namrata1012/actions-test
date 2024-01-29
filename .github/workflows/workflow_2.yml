@@ -2,10 +2,10 @@
 name: Workflow 2
 
 on:
-  workflow_dispatch:
-    inputs:
-      branch_name:
-        description: 'The branch name to process'
+  workflow_run:
+    workflows: [Run Tests]
+    types:
+      - completed
 
 jobs:
   process-changes:
@@ -15,6 +15,15 @@ jobs:
 
     - name: Print branch name
       run: echo "${{ github.event.inputs.branch_name }}"
+
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: my-artifact
+        path: .
+
+    - name: Print branch name
+      run: echo "${{ env.BRANCH_NAME }}"
         
     - name: Check out the code
       uses: actions/checkout@v2
