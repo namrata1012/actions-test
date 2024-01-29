@@ -43,16 +43,11 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-    - name: Set branch name
-      run: echo "BRANCH_NAME=$(echo $GITHUB_REF | awk -F/ '{print $3}')" >> $GITHUB_ENV
-
-    - name: Set Branch Output
-      id: set-branch-output
-      run: echo "::set-output name=branch-name::${GITHUB_REF#refs/heads/}"
-
-    - name: Print Branch Name
-      run: echo "${{ needs.workflow1.outputs.branch-name }}"
-
+    - name: Repository Dispatch
+      uses: peter-evans/repository-dispatch@v1
+      with:
+        event-type: my-event
+        client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "test": "test message"}'
     
 #  notify:
 #    needs: run_python_script
