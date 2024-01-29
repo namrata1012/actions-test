@@ -63,8 +63,8 @@ def run_drepr_on_file(datasource):
     try:
         result = subprocess.run(command, shell=True, check=True, text=True, capture_output=True)
         output_lines = result.stdout.splitlines()[2:]  # Skip the first two lines
-        print(result.stdout)
-        print(output_lines)
+        # print(result.stdout)
+        # print(output_lines)
         return '\n'.join(output_lines)
 
         # Replace 'output_file.txt' with the desired file name
@@ -105,7 +105,7 @@ def create_drepr_update_github(file_path, filename):
     payload = {
         'message': 'Update file via GitHub Actions',
         'content': encoded_content,
-        'branch': 'main',
+        'branch': 'test-pr',
         'sha':None
     }
 
