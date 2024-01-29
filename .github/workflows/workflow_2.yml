@@ -1,16 +1,21 @@
-name: WorkflowOnMerge
+
+name: Workflow 2
 
 on:
-  workflow_run:
-    workflows: [Run Tests]
-    types:
-      - completed
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'The branch name to process'
 
 jobs:
   process-changes:
     runs-on: ubuntu-latest
 
     steps:
+
+    - name: Print branch name
+      run: echo "${{ github.event.inputs.branch_name }}"
+        
     - name: Check out the code
       uses: actions/checkout@v2
       with:
