@@ -36,6 +36,33 @@ jobs:
         done
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+    - name: Set branch name
+      run: echo "BRANCH_NAME=$(echo $GITHUB_REF | awk -F/ '{print $3}')" >> $GITHUB_ENV
+
+    - name: Produce artifact
+      run: echo "Some data" > artifact.txt
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: artifact.txt
+
+    - name: Trigger Workflow 2
+      uses: actions/github-script@v5
+      with:
+        script: |
+          const response = await github.actions.createWorkflowDispatch({
+            workflow: 'workflow_2.yml',
+            ref: 'main',
+            inputs: {
+              branch_name: process.env.BRANCH_NAME
+              }
+          });
+          console.log(response.data);
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 #  notify:
