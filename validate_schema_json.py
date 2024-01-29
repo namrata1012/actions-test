@@ -296,60 +296,58 @@ temp_file = sys.argv[2]
 print('Running this')
 print(changed_files, temp_file)
 
-for file_path in changed_files:
-    if is_json_file(file_path):
-        print(f'{file_path} is a JSON file')
-        process_files(file_path)
-        json_data=''
-        with open(file_path) as file:
-            json_data = json.load(file)
+file_path = changed_files
+if is_json_file(file_path):
+    print(f'{file_path} is a JSON file')
+    process_files(file_path)
+    json_data=''
+    with open(file_path) as file:
+        json_data = json.load(file)
 
-        json_string = json.dumps(json_data)
-        mineral_site_json = json.loads(json_string)
+    json_string = json.dumps(json_data)
+    mineral_site_json = json.loads(json_string)
 
-        ms_list = json_data['MineralSite']
-        mndr_url = 'https://minmod.isi.edu/resource/'
+    ms_list = json_data['MineralSite']
+    mndr_url = 'https://minmod.isi.edu/resource/'
 
-        for ms in ms_list:
-            mi_data = {
-                "site": ms
-            }
+    for ms in ms_list:
+        mi_data = {
+            "site": ms
+        }
 
-            ms['id'] = mndr_url + mineral_site_uri(mi_data)
-            if "MineralInventory" in ms:
+        ms['id'] = mndr_url + mineral_site_uri(mi_data)
+        if "MineralInventory" in ms:
+            mi_list = ms['MineralInventory']
 
-                mi_list = ms['MineralInventory']
+            counter = 0
 
-                counter = 0
+            for mi in mi_list:
+                mi_data = {                        "site": ms,
+                    "id": counter
+                }
+                mi['id'] = mndr_url + mineral_inventory_uri(mi_data)
+                counter += 1
 
-                for mi in mi_list:
-                    mi_data = {
-                        "site": ms,
-                        "id": counter
-                    }
-                    mi['id'] = mndr_url + mineral_inventory_uri(mi_data)
-                    counter += 1
+                if "reference" in mi:
+                    reference = mi['reference']
+                    if "document" in reference:
+                        document = reference['document']
 
-                    if "reference" in mi:
-                        reference = mi['reference']
-                        if "document" in reference:
-                            document = reference['document']
+                        doc_data = {
+                            "document": document
+                        }
 
-                            doc_data = {
-                                "document": document
-                            }
-
-                            document['id'] = mndr_url + document_uri(doc_data)
+                        document['id'] = mndr_url + document_uri(doc_data)
 
 
-        update_pull_request(json.dumps(json_data, indent=2), file_path)
+    update_pull_request(json.dumps(json_data, indent=2), file_path)
 
 
 
 
 
-    else:
-        print(f'{file_path} is not a JSON file')
+else:
+    print(f'{file_path} is not a JSON file')
 
 
 # print(type(json_data))
