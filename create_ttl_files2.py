@@ -124,7 +124,6 @@ def create_drepr_from_workflow1(file_path):
     path, file_extension = os.path.splitext(file_path)
     split_path = path.split('/')
     filename = split_path[-1]
-    if is_json_file(file_path):
-        generated_json_path = f'generated_files/json_files/{filename}.json'
-        create_drepr_update_github(file_path, filename)
+    generated_json_path = f'generated_files/json_files/{filename}.json'
+    create_drepr_update_github(file_path, filename)
 
