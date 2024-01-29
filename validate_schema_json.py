@@ -290,7 +290,7 @@ def process_files(filename):
         raise  # Raise an exception to indicate failure
 
 
-changed_files = sys.argv[1:]
+changed_files = sys.argv[1]
 temp_file = sys.argv[2]
 
 print('Running this')
