@@ -9,6 +9,12 @@ jobs:
   run_python_script:
     runs-on: ubuntu-latest
 
+    outputs:
+      # Define the output variable 'branch-name' with the value of the current branch
+      # This can be accessed in other workflows using ${{ needs.workflow1.outputs.branch-name }}
+      # 'value' is the default output name that will be used if not specified in the outputs section
+      outputs: 'branch-name'
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -40,14 +46,12 @@ jobs:
     - name: Set branch name
       run: echo "BRANCH_NAME=$(echo $GITHUB_REF | awk -F/ '{print $3}')" >> $GITHUB_ENV
 
-    - name: Produce artifact
-      run: echo "Some data" > artifact.txt
+    - name: Set Branch Output
+      id: set-branch-output
+      run: echo "::set-output name=branch-name::${GITHUB_REF#refs/heads/}"
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: my-artifact
-        path: artifact.txt
+    - name: Print Branch Name
+      run: echo "${{ needs.workflow1.outputs.branch-name }}"
 
     
 #  notify:
