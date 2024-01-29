@@ -38,7 +38,8 @@ jobs:
       uses: jitterbit/get-changed-files@v1
     - run: |
         for changed_file in ${{ steps.files.outputs.all }}; do
-          python validate_schema_json.py ${changed_file}
+          TEMP_FILE=$(mktemp)
+          python validate_schema_json.py ${changed_file} ${TEMP_FILE}
         done
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
