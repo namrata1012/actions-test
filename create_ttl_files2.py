@@ -57,7 +57,7 @@ def file_datasource(file_path):
 def run_drepr_on_file(datasource):
     destination = 'generated_files/ttl_files/'
     model_file = 'model.yml'
-    command = f' python -m drepr -r {model_file} -d default="${datasource}"'
+    command = f' python -m drepr -r {model_file} -d default="{datasource}"'
     print('Running ... ', command)
 
     try:
@@ -125,5 +125,11 @@ def create_drepr_from_workflow1(file_path):
     split_path = path.split('/')
     filename = split_path[-1]
     generated_json_path = f'generated_files/json_files/{filename}.json'
+
+    with open(file_path, 'r') as file:
+        file_contents = file.read()
+    print("File Contents After Printing:")
+    print(file_contents)
+
     create_drepr_update_github(file_path, filename)
 
